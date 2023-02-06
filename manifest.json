@@ -15,7 +15,9 @@
   },
 
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "clipboardWrite",
+    "contextMenus"
   ],
 
   "content_scripts": [{

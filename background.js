@@ -33,3 +33,19 @@ chrome.pageAction.onClicked.addListener(tab => {
     }`
   });
 });
+
+chrome.contextMenus.create({
+  id: 'copy-canonical',
+  title: 'Copy canonical link',
+  contexts: ["page_action"]
+});
+
+chrome.contextMenus.onClicked.addListener(({ menuItemId }, tab) => {
+  if (menuItemId === 'copy-canonical') {
+  chrome.tabs.executeScript(tab.id, {
+    code: `{
+      navigator.clipboard.writeText(document.querySelector('link[rel="canonical"]').href);
+    }`
+  });
+  }
+})
